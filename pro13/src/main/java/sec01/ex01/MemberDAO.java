@@ -1,0 +1,88 @@
+package sec01.ex01;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+
+public class MemberDAO {
+	private Connection con;
+	private PreparedStatement pstmt;
+	private DataSource dataFactory;
+	
+	public MemberDAO()	{
+		try {
+			Context ctx = new InitialContext();
+			Context envContext =(Context)ctx.lookup("java:/comp/env");
+			dataFactory =(DataSource) envContext.lookup("jdbc/mariadb");
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			}
+	}
+
+
+	public List listMembers() {
+		List list = new ArrayList();
+		//List list2 = new ArrayList<E>();
+		//왜'ArrayList();','new ArrayList<E>();'차이가 뭘까?
+		try {
+			con = dataFactory.getConnection();
+			String query = "select * from t_member order by joinDate desc";
+			System.out.println("prepareStatement"+ query);
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String id =rs.getString("id");
+				String pwd=rs.getString("pwd");
+				String name=rs.getString("name");
+				String email= rs.getString("email");
+				Date joinDate = rs.getDate("joinDate");
+				
+				MemberBean vo = new MemberBean();
+				vo.setId(id);
+				vo.setPwd(pwd);
+				vo.setName(name);
+				vo.setEmail(email);
+				vo.setJoinDate(joinDate);
+				list.add(vo);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public void addMember(MemberBean memberBean) {
+		try {
+			Connection con = dataFactory.getConnection();
+			String id = memberBean.getId();
+			String pwd = memberBean.getPwd();
+			String name = memberBean.getId();
+			String email = memberBean.getEmail();
+			String query = "insert into t_member";
+			query +="(id,pwd,name,email)";
+			query +="values(?,?,?,?)";
+		}catch (Exception e) {
+			e.printStackTrace();}//Trace 추적하다
+		
+		/*
+			"printStackTrace"는 자바에서 예외(에러)가 발생했을 때 
+			해당 예외의 추적(trace) 정보를 출력하는 메서드입니다. 
+			이 메서드는 예외를 디버깅하거나 오류의 원인을 파악하는 데 도움이 됩니다.
+		 */
+	}
+	
+	
+	
+}
