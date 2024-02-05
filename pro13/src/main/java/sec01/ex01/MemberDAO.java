@@ -21,7 +21,7 @@ public class MemberDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext =(Context)ctx.lookup("java:/comp/env");
-			dataFactory =(DataSource) envContext.lookup("jdbc/mariadb");
+			dataFactory =(DataSource) envContext.lookup("jdbc/mariaDB");
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class MemberDAO {
 		//왜'ArrayList();','new ArrayList<E>();'차이가 뭘까?
 		try {
 			con = dataFactory.getConnection();
-			String query = "select * from t_member order by joinDate desc";
+			String query = "select * from t_member order by joinDate desc" ;
 			System.out.println("prepareStatement"+ query);
 			pstmt = con.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
@@ -68,11 +68,18 @@ public class MemberDAO {
 			Connection con = dataFactory.getConnection();
 			String id = memberBean.getId();
 			String pwd = memberBean.getPwd();
-			String name = memberBean.getId();
+			String name = memberBean.getName();
 			String email = memberBean.getEmail();
 			String query = "insert into t_member";
 			query +="(id,pwd,name,email)";
 			query +="values(?,?,?,?)";
+			
+			  System.out.println("prepareStatement:" + query); pstmt =
+			  con.prepareStatement(query); pstmt.setString(1, id); pstmt.setString(2, pwd);
+			  pstmt.setString(3, name); pstmt.setString(4, email); pstmt.executeUpdate();
+			  pstmt.close();
+			 
+			
 		}catch (Exception e) {
 			e.printStackTrace();}//Trace 추적하다
 		

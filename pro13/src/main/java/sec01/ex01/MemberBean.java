@@ -23,6 +23,8 @@ public class MemberBean {
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
+		
+	
 	}
 	//geter 와 seter 만들기 //단축키: alt + shift + s
 	// Generate Getters and Setters 클릭 후 해당 인자를 체크 후 확인 
