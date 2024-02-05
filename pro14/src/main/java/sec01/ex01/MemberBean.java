@@ -15,7 +15,7 @@ public class MemberBean {
 
 	}
 	public MemberBean(String id, String pwd, String name, String email) {
-		//인자가 있는 생성자 만들기 위의 단축 키와 동일 
+		//인자가 있는 생성자 만들기 위의 단축키와 동일 
 		//(Generate(생성하다) Constructor using Fields) 클릭  여기선 인자를 선택 후 확인 
 		//Generate Constructor using Fields 해석: 필드를 사용하여 생성자 생성
 		 //(생성하다),(생성자),(사용하는) (필드)
