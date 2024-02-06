@@ -18,8 +18,8 @@
         <td width="400"><input type="password"  name="pwd"></td>
     </tr>
     <tr>
-        <td width="200"><p align="right">이름</td>
-        <td width="400"><p><input type="text"  name="name"></td>
+        <td width="20"><p align="right">이름</td>
+        <td width="4"><p><input type="text"  name="name"></td>
     </tr>
     <tr>
         <td width="200"><p align="right">이메일</td>

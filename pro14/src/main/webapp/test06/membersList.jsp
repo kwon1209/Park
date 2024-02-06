@@ -2,7 +2,7 @@
      import="java.util.*, sec02.ex01.*"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
   request.setCharacterEncoding("UTF-8");
@@ -23,19 +23,19 @@
    </tr>  
 <c:choose>
 <%--
- ArrayList list =request.getAttribute("membersList");
+ ArrayList list =request.getAttribute("membersList1");
 --%>
-<c:when test="${ membersList==null}" >
+<c:when test="${ membersList1==null}" >
    <tr>
     <td colspan=5>
       <b>등록된 회원이 없습니다.</b>
     </td>  
   </tr>
 </c:when>  
-<c:when test="${membersList!= null}" >
-  <c:forEach  var="mem" items="${membersList }" >
+<c:when test="${membersList1!= null}" >
+  <c:forEach  var="mem" items="${membersList1 }" > <!-- 바인딩한 속성명 $"{membersList1}" -->
    <tr align="center">
-     <td>${mem.id }</td>
+     <td>${mem.id }</td> <!-- 속성명으로 하나씩 출력 -->
      <td>${mem.pwd}</td>
      <td>${mem.name}</td>     
      <td>${mem.email}</td>     

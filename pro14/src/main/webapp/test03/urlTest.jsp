@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:url var="url1"  value="/test01/member1.jsp"  >
   <c:param  name="id" value="hong" />
   <c:param  name="pwd" value="1234" />

@@ -11,7 +11,7 @@
 <jsp:setProperty   name="addr" property="zipcode" value="07654"/>
 <%
   m.setAddr(addr);
-%> 
+%>  
 <html>
 <head>
 <meta charset=”UTF-8">
